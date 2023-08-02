@@ -179,6 +179,8 @@ Important Properties:
     int x;
     methods
   }
+  Remembe Friendship is granted, not taken
+
   in simple terms any member function of class B can access private and protected data of A but member function of Class A cannot access the data of class B.
  Let us take a example of employee and sales where this relation is practically observed.On the basis of sales we are grading employee and giving incentives. 
 
@@ -277,4 +279,6 @@ void solve(){
     
 }
 
-  
+
+
+
