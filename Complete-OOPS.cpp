@@ -31,124 +31,12 @@ What is the use of friend function?
 Let us see using a example of Internal and External marks of student and how we combine them using friend function.
 How useful it is. Why we actually need friend function. Think of it as a thirdy party you give him resource he will do 
 the task for you. Remember - Friend functions in C++ provide access to private or protected members of a class from outside the class scope.
- Example - Friend Function
-
-class External1;
-class Internal1
-{
-    int math;
-    int oop;
-    int se;
-    int ds;
-    int add;
-public:
-    void read()
-    {
-
-        cout<<"-----Enter Internal Marks:-----"<<endl;
-        cout<<"Enter Maths Internals:"<<endl;
-        cin>>math;
-        cout<<"Enter OOP Internals:"<<endl;
-        cin>>oop;
-        cout<<"Enter SE Internals:"<<endl;
-        cin>>se;
-        cout<<"Enter DS Internals:"<<endl;
-        cin>>ds;
-
-        add=math+oop+se+ds;
-        cout<<"Total in Internals="<<add<<endl;
-    }
-
-    friend int sum(Internal1,External1);
-};
-class External1
-{
-    int math;
-    int oop;
-    int se;
-    int ds;
-    int add;
-public:
-    void read()
-    {
-
-        cout<<"-----Enter External Marks:-----"<<endl;
-        cout<<"Enter Maths Externals:"<<endl;
-        cin>>math;
-        cout<<"Enter OOP Externals:"<<endl;
-        cin>>oop;
-        cout<<"Enter SE Externals:"<<endl;
-        cin>>se;
-        cout<<"Enter DS Externals:"<<endl;
-        cin>>ds;
-        add=math+oop+se+ds;
-        cout<<"Total in Externals="<<add<<endl;
-
-    }
-    friend int sum(Internal1,External1);
-};
-int sum(Internal1 a, External1 b)
-{
-    if(a.math+b.math<50)
-    {
-        cout<<"Math FAILED"<<endl;
-    }
-    else
-    {
-        cout<<"Math PASSED"<<endl;
-    }
-    if(a.oop+b.oop<50)
-    {
-        cout<<"OOP FAILED"<<endl;
-    }
-    else
-    {
-        cout<<"OOP PASSED"<<endl;
-    }
-    if(a.se+b.se<50)
-    {
-        cout<<"SE FAILED"<<endl;
-    }
-    else
-    {
-        cout<<"SE PASSED"<<endl;
-    }
-    if(a.ds+b.ds<50)
-    {
-        cout<<"DS FAILED"<<endl;
-    }
-    else
-    {
-        cout<<"DS PASSED"<<endl;
-    }
-    cout<<"Combined out of 400 Marks is:"<<a.add+b.add<<endl;
-}
-int main()
-{
-    int t;
-    Internal1 x;
-    External1 y;
-    x.read();
-    y.read();
-    //cout<<"The Total Marks are:"<<sum(x,y)<<endl;
-    t=sum(x,y);
-    if(t>=200)
-    {
-        cout<<"-----OVERALL-----"<<endl;
-        cout<<"The student has PASSED."<<endl;
-    }
-    else
-    {
-        cout<<"The student has FAILED."<<endl;
-    }
+ Example - Friend Function:
+  https://ideone.com/mlclZw
 
 
-
-}
-
-
-Friend Class : 
-
+Example - Friend Class : 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Alpha {
 private:
 	int data;
@@ -171,7 +59,7 @@ int main() {
 	beta.func1(alpha);
 	return 0;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 In C++, when a class is declared as a friend of another class, it means that the friend class has access to the private and 
 protected members of the class it is a friend of. In this case, Beta is a friend of Alpha, so it can access the private member
 data of the Alpha class.
@@ -200,7 +88,7 @@ Important Properties:
 
   in simple terms any member function of class B can access private and protected data of A but member function of Class A cannot access the data of class B.
  Let us take a example of employee and sales where this relation is practically observed.On the basis of sales we are grading employee and giving incentives. 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class sales;
 class Employee
 {
@@ -292,9 +180,23 @@ void solve(){
     s1.read_data();
     s1.calculate_incentive(e1);
     s1.display_performance(e1);
-  
-    
 }
+Like for a particular sale we can easily deduce which employee has performed how well.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+"this" pointer
+- To understand this pointer it is important to know how objects look 
+  at functions and data members of class.
+- Each object gets its own copy of the data member.
+- All-access the same function definition as present in the code segment.
+- Meaning each object gets its own copy of data members and all objects
+  share a single copy of member functions.
+ ook . Then now question is that if only one copy of each member function 
+ exists and is used by mulitple objects, how are the proper data members 
+ are accessed and updated?
+
+ Answer - The compiler supplies an implicit pointer along with the names 
+ of the functions as 'this'
 
 
 
