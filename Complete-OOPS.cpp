@@ -2,6 +2,23 @@ To The Point:
 4 PILLARS -----
             1.Encapsulation                          3.Inheritence
             2.Abstraction                            4.Polymorphism
+1.Encapsulation is the process of combining data and functions into a single unit called class. In Encapsulation, the data is not accessed directly; it is accessed through the functions 
+  present inside the class. In simpler words, attributes of the class are kept private and public getter and setter methods are provided to manipulate these attributes. Thus, encapsulation 
+  makes the concept of data hiding possible. (Data hiding: a language feature to restrict access to members of an object, reducing the negative effect due to dependencies. e.g. "protected", 
+  "private" feature in C++).
+   Data hiding can be thought as a subset of Encapsulation.
+   Data hiding only hides class data components, whereas data encapsulation 
+   hides class data parts and private methods as well.
+2. Abstraction refers to the act of representing essential features without 
+   including the background details(class definition)
+   Data abstraction is implemented by creating objects of the class definition.
+   Objects are the basic run time entities in oop system.
+
+3. The idea of inheritance is simple, a class is based on another class and uses data and implementation of the other class. And the purpose of inheritance is Code Reuse.
+4. Polymorphism is the ability to present the same interface for differing underlying forms (data types). With polymorphism, each of these classes will have different underlying data. A point shape needs only two coordinates (assuming it's in a two-dimensional space of course). A circle needs a center and radius. A square or rectangle needs two coordinates for the top left and bottom right corners and (possibly) a rotation. An irregular polygon needs a series of lines.
+
+
+	
 
 What is the use of friend function?
 - Special function for specific use
