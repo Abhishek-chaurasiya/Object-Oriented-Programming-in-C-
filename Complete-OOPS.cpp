@@ -237,7 +237,10 @@ void solve(){
 	e1.getEmployeeDetail();
 
 }
+It is worth mentioning that constructors can only call constructors from their immediate parent/base class.Consequently, the C constructor could not call or pass parameters to the A constructor directly. The C constructor can only call the B constructor (which has the responsibility of calling the A constructor).
 
+Summary
+When constructing a derived class, the derived class constructor is responsible for determining which base class constructor is called. If no base class constructor is specified, the default base class constructor will be used. In that case, if no default base class constructor can be found (or created by default), the compiler will display an error. The classes are then constructed in order from most base to most derived.	
 
 Method overriding:
 	
