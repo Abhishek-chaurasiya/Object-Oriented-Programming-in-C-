@@ -198,6 +198,50 @@ Like for a particular sale we can easily deduce which employee has performed how
  Answer - The compiler supplies an implicit pointer along with the names 
  of the functions as 'this'
 
+Inheritance - allows us to reuse classes by having other classes inherit their members.
+Constructor initialization - From top to bottom in inheritance chain
+class Person{
+private:
+	string name;
+	int age;
 
+public:
+	Person(string name,int age){
+		this->name = name;
+		this->age = age;
+	}
+	void getName(){
+		cout<<name<<endl;
+	}
+};
+
+class Employee:public Person{
+private:
+	string dep;
+	int salary;
+public:
+	Employee(string dep,int salary,string name,int age):Person(name,age){
+		this->dep = dep;
+		this->salary = salary;
+	}
+	void getEmployeeDetail(){
+		cout<<dep<<endl;
+		cout<<salary<<endl;
+	}
+};
+
+void solve(){
+	
+	Employee e1("cse",100000,"abhishek",22);
+	e1.getName();
+	e1.getEmployeeDetail();
+
+}
+
+
+Method overriding:
+	
+Virtual Functions:
+P
 
 
