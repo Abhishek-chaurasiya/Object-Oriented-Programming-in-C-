@@ -242,6 +242,32 @@ It is worth mentioning that constructors can only call constructors from their i
 Summary
 When constructing a derived class, the derived class constructor is responsible for determining which base class constructor is called. If no base class constructor is specified, the default base class constructor will be used. In that case, if no default base class constructor can be found (or created by default), the compiler will display an error. The classes are then constructed in order from most base to most derived.	
 
+***As a quick refresher, public members can be accessed by anybody. Private members can only be accessed by member functions of the same class or friends. This means derived classes can not access private members of the base class directly!
+
+C++ has a third access specifier that we have yet to talk about because it’s only useful in an inheritance context. The protected access specifier allows the class the member belongs to, friends, and derived classes to access the member. However, protected members are not accessible from outside the class.
+
+class Base
+{
+public:
+    int var_public {}; // can be accessed by anybody
+protected:
+    int var_protected {}; // can be accessed by Base members, friends, and derived classes
+private:
+    int var_private {}; // can only be accessed by Base members and friends (but not derived classes)
+};
+
+class Derived: public Base
+{
+public:
+    Derived()
+    {
+        var_public = 1; // allowed: can access public base members from derived class
+        var_protected = 2; // allowed: can access protected base members from derived class
+        var_private = 3; // not allowed: can not access private base members from derived class
+    }
+};
+
+
 Method overriding:
 	
 Virtual Functions:
