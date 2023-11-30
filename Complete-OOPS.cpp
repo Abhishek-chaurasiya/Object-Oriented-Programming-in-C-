@@ -268,7 +268,7 @@ public:
 };
 
 
-Method overriding:
+Method overriding: function having same prototype in inherited class
 occurs when a subclass (child class) has the same method as the parent class. 
 
 	
@@ -280,7 +280,10 @@ Virtual Functions:
       float b = 5.0;
       ptr = &b; // not allowed
 
-But in case of inheritance Base class pointer can point to the object of any of its descendents class. but why ? - basically when derived class is made it is made up of two parts
+But in case of inheritance Base class pointer can point to the object of any of its descendents class but converse is not true. but why ? - basically when derived class is made it is made up of two parts one its own methods and variables and other is inherited.
+
+When we create a derived object, it contains a Base part(which is constructed first) and a Derived part(which is constructed second).	
+	
 	
 
 
