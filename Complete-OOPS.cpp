@@ -432,6 +432,26 @@ void solve(){
     vector<Animal*> animals = { &c1,&c2,&c3,&d1,&d2,&d3};
     for(auto animal:animals){
     	cout<<animal->getName()<<endl;
+	cout<<animal->speak()<<endl;    
     }
 
-}	
+}
+While this compiles and executes, unfortunately the fact that each element of array “animals” is a pointer to an Animal means that animal->speak() will call Animal::speak() instead of the derived class version of speak() that we want. The output is
+emma
+????
+belly
+????
+jaction
+????
+amar
+????
+akbar
+????
+anthony
+????
+
+Although both of these techniques could save us a lot of time and energy, they have the same problem. The pointer or reference to the base class calls the base version of the function rather than the derived version. If only there was some way to make those base pointers call the derived version of a function instead of the base version…	
+
+
+Want to take a guess what virtual functions are for? :)
+A virtual function is a special type of member function that, when called, resolves to the most-derived version of the function for the actual type of the object being referenced or pointed to.
