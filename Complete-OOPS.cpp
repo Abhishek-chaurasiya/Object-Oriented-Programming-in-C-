@@ -351,5 +351,87 @@ We see the same issue here. Because ptr is an Animal pointer, it can only see th
 
 Now you might be saying, “The above examples seem kind of silly. Why would I set a pointer or reference to the base class of a derived object when I can just use the derived object?” It turns out that there are quite a few good reasons.
 	
-1.First, let’s say you wanted to write a function that printed an animal’s name and sound. Without using a pointer to a base class, you’d have to write it using overloaded functions, like this:
+1.First, let’s say you wanted to write a function that printed an animal’s name and sound. Without using a pointer to a base class, you’d have to write it using overloaded functions, like 
+ this:
+void report(const Cat& cat)
+{
+    std::cout << cat.getName() << " says " << cat.speak() << '\n';
+}
 
+void report(const Dog& dog)
+{
+    std::cout << dog.getName() << " says " << dog.speak() << '\n';
+}	
+
+Not too difficult, but consider what would happen if we had 30 different animal types instead of 2. You’d have to write 30 almost identical functions! Plus, if you ever added a new type of animal, you’d have to write a new function for that one too. This is a huge waste of time considering the only real difference is the type of the parameter.
+
+However, because Cat and Dog are derived from Animal, Cat and Dog have an Animal part. Therefore, it makes sense that we should be able to do something like this:
+
+void report(const Animal& rAnimal)
+{
+    std::cout << rAnimal.getName() << " says " << rAnimal.speak() << '\n';
+}	
+This would let us pass in any class derived from Animal, even ones that we created after we wrote the function! Instead of one function per derived class, we get one function that works with all classes derived from Animal!
+
+The problem is, of course, that because rAnimal is an Animal reference, rAnimal.speak() will call Animal::speak() instead of the derived version of speak().
+
+2.Second, let’s say you had 3 cats and 3 dogs that you wanted to keep in an array for easy access. Because arrays can only hold objects of one type, without a pointer or reference to a base class, you’d have to create a different array for each derived type, like this:
+	void solve(){
+	
+	// Cat c1("jelly");
+	// cout<<c1.getName()<<endl;
+	// cout<<c1.speak()<<endl;
+    
+        //  Dog d1("major");
+	// cout<<d1.getName()<<endl;
+	// cout<<d1.speak()<<endl;
+    
+    vector<Dog> dogs= {{"amar"}, {"akbar"},{"anthony"}};
+    for(auto &dog:dogs){
+    	cout<<dog.getName()<<endl;
+    }
+    
+    vector<Cat> cats= {{"emma"}, {"belly"},{"jaction"}};
+    for(auto &cat:cats){
+    	cout<<cat.getName()<<endl;
+    }
+
+}
+Now, consider what would happen if you had 30 different types of animals. You’d need 30 arrays, one for each type of animal!
+
+However, because both Cat and Dog are derived from Animal, it makes sense that we should be able to do something like this:
+
+void solve(){
+	
+	// Cat c1("jelly");
+	// cout<<c1.getName()<<endl;
+	// cout<<c1.speak()<<endl;
+    
+ //    Dog d1("major");
+	// cout<<d1.getName()<<endl;
+	// cout<<d1.speak()<<endl;
+    
+    // vector<Dog> dogs= {{"amar"}, {"akbar"},{"anthony"}};
+    // for(auto &dog:dogs){
+    // 	cout<<dog.getName()<<endl;
+    // }
+    
+    // vector<Cat> cats= {{"emma"}, {"belly"},{"jaction"}};
+    // for(auto &cat:cats){
+    // 	cout<<cat.getName()<<endl;
+    // }
+
+    Cat c1("emma");
+    Cat c2("belly");
+    Cat c3("jaction");
+
+    Dog d1("amar");
+    Dog d2("akbar");
+    Dog d3("anthony");
+
+    vector<Animal*> animals = { &c1,&c2,&c3,&d1,&d2,&d3};
+    for(auto animal:animals){
+    	cout<<animal->getName()<<endl;
+    }
+
+}	
