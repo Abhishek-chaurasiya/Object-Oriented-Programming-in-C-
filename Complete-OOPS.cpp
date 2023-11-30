@@ -284,7 +284,72 @@ But in case of inheritance Base class pointer can point to the object of any of 
 
 When we create a derived object, it contains a Base part(which is constructed first) and a Derived part(which is constructed second).	
 	
+class Animal{
+private:
+	string name;
+
+public:
+	Animal(string name){
+		this->name = name;
+	}
+	string getName(){
+		return name;
+	}
+	string speak(){
+		return "????";
+	}
+};
+
+class Cat:public Animal{
+private:
 	
+public:
+	Cat(string name):Animal(name){
+	
+	}
+	// method overriding
+	string speak(){
+		return "meow";
+	}
+	
+};
+class Dog:public Animal{
+private:
+	
+public:
+	Dog(string name):Animal(name){
+	
+	}
+	// method overriding
+	string speak(){
+		return "Woof";
+	}
+	
+};
 
 
+
+void solve(){
+	
+	Cat c1("jelly");
+	cout<<c1.getName()<<endl;
+	cout<<c1.speak()<<endl;
+    
+    Dog d1("major");
+	cout<<d1.getName()<<endl;
+	cout<<d1.speak()<<endl;
+
+	Animal *ptr = &c1;
+	// This is problem 
+	cout<<ptr->speak()<<endl;
+	ptr = &d1;
+	cout<<ptr->speak()<<endl; 
+
+}
+
+We see the same issue here. Because ptr is an Animal pointer, it can only see the Animal portion of the class. Consequently, pAnimal->speak() calls Animal::speak() rather than the Dog::Speak() or Cat::speak() function.
+
+Now you might be saying, “The above examples seem kind of silly. Why would I set a pointer or reference to the base class of a derived object when I can just use the derived object?” It turns out that there are quite a few good reasons.
+	
+1.First, let’s say you wanted to write a function that printed an animal’s name and sound. Without using a pointer to a base class, you’d have to write it using overloaded functions, like this:
 
