@@ -269,8 +269,19 @@ public:
 
 
 Method overriding:
+occurs when a subclass (child class) has the same method as the parent class. 
+
 	
 Virtual Functions:
-P
+-General: Pointer of type (int) can only contains the address of integer variable 
+ ex - int *ptr; 
+      int a = 5;
+      ptr = &a; // allowed
+      float b = 5.0;
+      ptr = &b; // not allowed
+
+But in case of inheritance Base class pointer can point to the object of any of its descendents class. but why ? - basically when derived class is made it is made up of two parts
+	
+
 
 
