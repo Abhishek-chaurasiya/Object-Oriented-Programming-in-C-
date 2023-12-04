@@ -455,3 +455,16 @@ Although both of these techniques could save us a lot of time and energy, they h
 
 Want to take a guess what virtual functions are for? :)
 A virtual function is a special type of member function that, when called, resolves to the most-derived version of the function for the actual type of the object being referenced or pointed to.
+
+Rule
+If a function is virtual, all matching overrides in derived classes are implicitly virtual.
+
+Polymorphism - In programming, polymorphism refers to the ability of an entity to have multiple forms (the term “polymorphism” literally means “many forms”). For example, consider the following two function declarations:
+int add(int, int);
+double add(double, double);
+The identifier add has two forms: add(int, int) and add(double, double).
+
+Compile-time polymorphism refers to forms of polymorphism that are resolved by the compiler. These include function overload resolution, as well as template resolution.
+Runtime polymorphism refers to forms of polymorphism that are resolved at runtime. This includes virtual function resolution.
+
+	
